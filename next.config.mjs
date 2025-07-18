@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: "export", // pour générer /out automatiquement
+  output: "export",
 };
 
-module.exports = nextConfig; // ✅ syntaxe compatible avec Next.js
+export default nextConfig;

@@ -86,8 +86,11 @@ function index() {
 
         <section className="w-full flex justify-center items-center text-center  ">
           <div className=" grid md:flex items-center justify-center gap-4 md:mx-20 w-full">
-            {extension.map((item) => (
-              <div className=" card-body bg-white box-border rounded-2xl grid justify-center shadow-lg items-center text-center space-y-4 p-8">
+            {extension.map((item, index) => (
+              <div
+                key={index}
+                className=" card-body bg-white box-border rounded-2xl grid justify-center shadow-lg items-center text-center space-y-4 p-8"
+              >
                 <span className="text-3xl">{item.icon}</span>
                 <h1 className="font-bold text-2xl">{item.textH1}</h1>
                 <p className="text-gray-500">{item.textSpan}</p>

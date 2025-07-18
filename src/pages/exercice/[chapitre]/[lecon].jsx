@@ -5,6 +5,7 @@ import Wrapper from "../../../../components/Wrapper";
 function Lecon() {
   const router = useRouter();
   const { chapitre, lecon, classe } = router.query;
+  // console.log("chapitre:", chapitre, "lecon:", lecon, "classe:", classe);
 
   const [inputValue, setinputValue] = useState("");
   const [TextValue, setTextValue] = useState("");
@@ -222,6 +223,30 @@ function Lecon() {
     if (score >= 20) return "Parfait ! Tu es un champion !";
     return "Bien joué !";
   };
+
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    if (!chapitre || !lecon || score === null || score === undefined) return;
+
+    const raw = localStorage.getItem(`score${classe}`);
+    const parsed = raw ? JSON.parse(raw) : {};
+
+    const pourcent = localStorage.getItem(`pourcentage${classe}`);
+    const tage = pourcent ? JSON.parse(pourcent) : {};
+
+    // ✅ Initialisation séparée si nécessaire
+    if (!parsed[chapitre]) parsed[chapitre] = {};
+    if (!tage[chapitre]) tage[chapitre] = {};
+
+    // ✅ Stockage des données
+    parsed[chapitre][lecon] = score;
+    tage[chapitre][lecon] = pourcentage;
+
+    // ✅ Mise à jour dans localStorage
+    localStorage.setItem(`score${classe}`, JSON.stringify(parsed));
+    localStorage.setItem(`pourcentage${classe}`, JSON.stringify(tage));
+  }, [router.isReady, score, chapitre, lecon, pourcentage]);
   return (
     <Wrapper nav={"Mon profil"}>
       {total ? (

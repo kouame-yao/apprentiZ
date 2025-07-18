@@ -1,10 +1,11 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Wrapper from "../../../components/Wrapper";
 
 export default function Classe() {
   const [MatierePage, setMatierePage] = useState("Mathématique");
-
+  const [Score, setscore] = useState({});
+  const [Pourcentage, setPourcentage] = useState({});
   const router = useRouter();
 
   const classeId = router.query;
@@ -16,7 +17,6 @@ export default function Classe() {
     { id: 1, matiere: "Mathématique", icon: "📊" },
     { id: 2, matiere: "Français", icon: "📚" },
   ];
-
   const chapitre = {
     Mathématique: [
       {
@@ -94,6 +94,42 @@ export default function Classe() {
     ],
   };
 
+  useEffect(() => {
+    const raw = localStorage.getItem(`score${classeId.id}`);
+    const parsed = raw ? JSON.parse(raw) : {};
+    setscore(parsed);
+
+    const pourcent = localStorage.getItem(`pourcentage${classeId.id}`);
+    const tage = pourcent ? JSON.parse(pourcent) : {};
+
+    setPourcentage(tage);
+  }, [classeId.id, MatierePage]);
+  // console.log(Score);
+  // console.log(chapitre);
+
+  function calculerTotalPourcentage(pourcentage) {
+    let total = 0;
+
+    Object.values(pourcentage).forEach((chapitres) => {
+      Object.values(chapitres).forEach((val) => {
+        const num = parseInt(val);
+        if (!isNaN(num)) {
+          total += num;
+        }
+      });
+    });
+
+    return total;
+  }
+
+  const Pource = calculerTotalPourcentage(Pourcentage);
+  const totalChapitres = Object.values(chapitre).reduce(
+    (total, chapList) => total + chapList.length,
+    0
+  );
+  const moyenne = Pource && totalChapitres ? Pource / totalChapitres : 0;
+  const totalPour = moyenne.toFixed(0);
+
   return (
     <Wrapper nav={"Mon profil"}>
       <main className="px-4 md:px-25 space-y-4">
@@ -108,9 +144,14 @@ export default function Classe() {
             </div>
             <div className="flex justify-between font-bold text-lg">
               <span>Progression générale</span>
-              <span>40%</span>
+              <span>{totalPour} %</span>
             </div>
-            <div className="p-2 rounded-3xl w-full bg-white"></div>
+            <div className="p-2 rounded-3xl w-full bg-white">
+              <div
+                className="p-2 rounded-3xl bg-blue-400"
+                style={{ width: `${totalPour}%` }}
+              ></div>
+            </div>
           </div>
         </section>
 
@@ -138,17 +179,33 @@ export default function Classe() {
         <section className="w-full">
           <div className="grid md:grid-cols-3 gap-4">
             {chapitre?.[MatierePage]?.map((item) => {
+              const id = String(item.id);
+
+              const NewScore = Score[MatierePage]?.[id] ?? 0;
+
+              const getScoreEmoji = (score) => {
+                if (score < 5) return "👎";
+                if (score < 10) return "🙂";
+                if (score < 15) return "😄";
+                if (score >= 20) return "🏆";
+                return "😄";
+              };
+
               let unklow;
               let iconik;
-              let text;
+              let text = "Commencer";
               let bgbtn;
               let textbtn;
+
+              if (NewScore > 0) {
+                text = "Recommencer";
+              }
               if (item.active === true) {
                 textbtn = "text-white";
                 bgbtn = "bg-green-400";
                 unklow = "bg-white cursor-pointer  ";
                 iconik = "📖";
-                text = "Recommencer";
+                // text = "Recommencer";
               } else if (item.active === false) {
                 textbtn = "text-black";
                 bgbtn = "bg-gray-400";
@@ -170,12 +227,12 @@ export default function Classe() {
                 >
                   <div className="flex text-3xl justify-between items-center ">
                     <span>{iconik}</span>
-                    <span>🙂</span>
+                    <span>{getScoreEmoji(NewScore)}</span>
                   </div>
                   <h1 className="text-lg font-bold">{item.chapitre}</h1>
                   <p className="text-gray-400 text-lg">{item.exo}</p>
                   <div className=" text-green-400 border-none bg-green-200 badge badge-success font-bold ">
-                    {item.score}
+                    {NewScore}/20
                   </div>
                   <button
                     className={`btn cursor-pointer ${bgbtn} ${textbtn} rounded-md  border-none btn-success font-bold`}

@@ -112,7 +112,10 @@ function Lecon() {
   const pourcentage = (net / lengh) * 100;
 
   const valide = () => {
-    if (exoer?.result === inputValue || exoer?.result === TextValue) {
+    if (
+      exoer?.result === inputValue.trim() ||
+      exoer?.result === TextValue.trim()
+    ) {
       setScore((prev) => prev + 4);
       setValues(true);
     } else {

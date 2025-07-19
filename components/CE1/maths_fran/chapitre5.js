@@ -45,7 +45,7 @@ const chapitre5_CE1 = {
       infoErro: "La bonne réponse était : 18.",
       infosucces: "18 est un multiple de 3.",
       type: "choix",
-      option: [16, 17, 19, 18, 20],
+      option: ["16", "17", "19", "18", "20"],
     },
   ],
   Français: [

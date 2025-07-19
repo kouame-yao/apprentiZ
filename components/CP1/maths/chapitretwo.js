@@ -4,7 +4,7 @@ const CP1exercice2 = {
       id: 1,
       title: "Les nombres de 0 à 10",
       question: "Combien font 3 + 2 ?",
-      result: 5,
+      result: "5",
       infoErro: "La bonne réponse était : 5.",
       infosucces: "3 + 2 = 5. Tu peux compter sur tes doigts !",
       type: "choix",

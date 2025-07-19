@@ -42,7 +42,7 @@ const CP1exercice3 = {
       id: 5,
       title: "Soustraction simple",
       question: "Combien font 9 - 4 ?",
-      result: 5,
+      result: "5",
       infoErro: "La bonne réponse était : 5.",
       infosucces: "9 - 4 = 5. Tu peux compter à rebours !",
       type: "choix",

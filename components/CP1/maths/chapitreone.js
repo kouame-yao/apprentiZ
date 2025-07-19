@@ -14,7 +14,7 @@ const CP1exercice1 = {
       id: 2,
       title: "Addition simple",
       question: "Combien font 1 + 4 ?",
-      result: 5,
+      result: "5",
       infoErro: "La bonne réponse était : 5.",
       infosucces: "1 + 4 = 5. Tu progresses bien !",
       type: "choix",

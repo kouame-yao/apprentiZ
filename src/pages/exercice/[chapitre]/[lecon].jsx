@@ -181,7 +181,7 @@ function Lecon() {
                 <p>
                   Question {Exerces + 1} sur {lengh}
                 </p>
-                <p>{pourcentage}%</p>
+                <p></p>
               </div>
               <div className="bg-white h-full rounded-4xl w-full md:w-lvh">
                 <div

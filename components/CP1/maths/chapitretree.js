@@ -52,7 +52,7 @@ const CP1exercice3 = {
       id: 6,
       title: "Soustraction simple",
       question: "Combien font 10 - 3 ?",
-      result: 7,
+      result: "7",
       infoErro: "La bonne réponse était : 7.",
       infosucces: "10 - 3 = 7. Excellent !",
       type: "choix",

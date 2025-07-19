@@ -1,0 +1,102 @@
+const chapitre2_CM2 = {
+  Mathématique: [
+    {
+      id: 1,
+      title: "Multiplication à deux chiffres",
+      question: "Calcule : 72 × 13 = ?",
+      result: "936",
+      infoErro: "La bonne réponse était : 936.",
+      infosucces: "72 × 13 = 936. Très bien !",
+      type: "input",
+    },
+    {
+      id: 2,
+      title: "Problème de division",
+      question:
+        "120 bonbons sont partagés entre 6 enfants. Combien chaque enfant reçoit-il ?",
+      result: "20",
+      infoErro: "La bonne réponse était : 20.",
+      infosucces: "120 ÷ 6 = 20 bonbons par enfant.",
+      type: "input",
+    },
+    {
+      id: 3,
+      title: "Encadrement",
+      question: "Entre quels nombres entiers est compris 3,8 ?",
+      result: "3 et 4",
+      infoErro: "La bonne réponse était : 3 et 4.",
+      infosucces: "3,8 est compris entre 3 et 4.",
+      type: "input",
+    },
+    {
+      id: 4,
+      title: "Calcul de durée",
+      question:
+        "Si un film commence à 14h15 et dure 1h40, à quelle heure se termine-t-il ?",
+      result: "15h55",
+      infoErro: "La bonne réponse était : 15h55.",
+      infosucces: "14h15 + 1h40 = 15h55.",
+      type: "input",
+    },
+    {
+      id: 5,
+      title: "Nombre décimal",
+      question: "Lequel de ces nombres est le plus grand ? (2,5 / 2,45 / 2,49)",
+      result: "2,5",
+      infoErro: "La bonne réponse était : 2,5.",
+      infosucces: "2,5 est le plus grand.",
+      type: "choix",
+      option: ["2,45", "2,49", "2,5", "2,0", "2,48"],
+    },
+  ],
+  Français: [
+    {
+      id: 1,
+      title: "Conjugaison - passé composé",
+      question:
+        "Conjugue le verbe 'prendre' à la 1ère personne du pluriel au passé composé.",
+      result: "nous avons pris",
+      infoErro: "La bonne réponse était : nous avons pris.",
+      infosucces: "« Nous avons pris » est correct.",
+      type: "input",
+    },
+    {
+      id: 2,
+      title: "Orthographe homophone",
+      question: "Complète : « Il a ___ un livre. » (a / à)",
+      result: "a",
+      infoErro: "La bonne réponse était : a.",
+      infosucces: "C’est le verbe avoir : « Il a un livre ».",
+      type: "input",
+    },
+    {
+      id: 3,
+      title: "Nature du mot",
+      question: "Dans « Le petit garçon lit », quel est le nom ?",
+      result: "garçon",
+      infoErro: "La bonne réponse était : garçon.",
+      infosucces: "« garçon » est le nom commun.",
+      type: "input",
+    },
+    {
+      id: 4,
+      title: "Phrase correcte ?",
+      question: "La phrase « Nous avons allé à la mer » est-elle correcte ?",
+      result: "faux",
+      infoErro: "La bonne réponse était : faux.",
+      infosucces: "Il faut dire « Nous sommes allés ».",
+      type: "booleen",
+    },
+    {
+      id: 5,
+      title: "Antonyme",
+      question: "Quel est l'antonyme de « rapide » ?",
+      result: "lent",
+      infoErro: "La bonne réponse était : lent.",
+      infosucces: "L’antonyme de rapide est lent.",
+      type: "input",
+    },
+  ],
+};
+
+export default chapitre2_CM2;

@@ -6,6 +6,7 @@ export default function Classe() {
   const [MatierePage, setMatierePage] = useState("Mathématique");
   const [Score, setscore] = useState({});
   const [Pourcentage, setPourcentage] = useState({});
+  const [activeEtape, setActiveEtape] = useState(true);
   const router = useRouter();
 
   const classeId = router.query;
@@ -22,74 +23,44 @@ export default function Classe() {
       {
         id: 1,
         chapitre: "chapitre 1",
-        exo: "Les nombres de 0 à 10",
-        score: 18 / 20,
-        active: true,
       },
       {
         id: 2,
         chapitre: "chapitre 2",
-        exo: "Addition simple",
-        score: 18 / 20,
-        active: true,
       },
       {
         id: 3,
         chapitre: "chapitre 3",
-        exo: "Soustraction simple",
-        score: 18 / 20,
-        active: true,
       },
       {
         id: 4,
         chapitre: "chapitre 4",
-        exo: "Les formats géométriques",
-        score: 18 / 20,
-        active: false,
       },
       {
         id: 5,
         chapitre: "chapitre 5",
-        exo: "Compter jusqu'à 20",
-        score: 18 / 20,
-        active: false,
       },
     ],
     Français: [
       {
         id: 1,
         chapitre: "chapitre 1",
-        exo: "L'alphabet",
-        score: "20/20",
-        active: true,
       },
       {
         id: 2,
         chapitre: "chapitre 2",
-        exo: "L'alphabet",
-        score: "20/20",
-        active: true,
       },
       {
         id: 3,
         chapitre: "chapitre 3",
-        exo: "L'alphabet",
-        score: "20/20",
-        active: true,
       },
       {
         id: 4,
         chapitre: "chapitre 4",
-        exo: "Premiers Mots",
-        score: "20/20",
-        active: false,
       },
       {
         id: 5,
         chapitre: "chapitre 5",
-        ex: "Phrase simples",
-        score: "20/20",
-        active: false,
       },
     ],
   };
@@ -129,6 +100,26 @@ export default function Classe() {
   );
   const moyenne = Pource && totalChapitres ? Pource / totalChapitres : 0;
   const totalPour = moyenne.toFixed(0);
+
+  const isChapterUnlocked = (matiere, chapitreId) => {
+    // Chapitre 1 est toujours accessible
+    if (chapitreId === 1) return true;
+    if (typeof window === "undefined") return false;
+    const raw = localStorage.getItem(`score${classeId.id}`);
+    if (!raw) return false;
+
+    const data = JSON.parse(raw);
+
+    // ID du chapitre précédent
+    const chapitrePrecedent = (chapitreId - 1).toString();
+
+    // Vérifie si un score existe pour ce chapitre précédent
+    return (
+      data[matiere] &&
+      data[matiere][chapitrePrecedent] &&
+      data[matiere][chapitrePrecedent] > 10
+    );
+  };
 
   return (
     <Wrapper nav={"Mon profil"}>
@@ -190,6 +181,7 @@ export default function Classe() {
                 if (score >= 20) return "🏆";
                 return "😄";
               };
+              const active = isChapterUnlocked(MatierePage, item.id);
 
               let unklow;
               let iconik;
@@ -200,13 +192,13 @@ export default function Classe() {
               if (NewScore > 0) {
                 text = "Recommencer";
               }
-              if (item.active === true) {
+              if (active) {
                 textbtn = "text-white";
                 bgbtn = "bg-green-400";
                 unklow = "bg-white cursor-pointer  ";
                 iconik = "📖";
                 // text = "Recommencer";
-              } else if (item.active === false) {
+              } else if (!active) {
                 textbtn = "text-black";
                 bgbtn = "bg-gray-400";
                 text = "Vérrouillé";
@@ -214,7 +206,13 @@ export default function Classe() {
                 unklow =
                   "bg-white pointer-events-none cursor-not-allowed opacity-50 ";
               }
-
+              let textverouil = "";
+              if (item.chapitre == "chapitre 1") {
+                textverouil;
+              } else if (NewScore < 10) {
+                textverouil =
+                  "Tu dois avoir plus de 10 points pour débloquer ce chapitre.";
+              }
               return (
                 <div
                   onClick={() =>
@@ -230,7 +228,9 @@ export default function Classe() {
                     <span>{getScoreEmoji(NewScore)}</span>
                   </div>
                   <h1 className="text-lg font-bold">{item.chapitre}</h1>
-                  <p className="text-gray-400 text-lg">{item.exo}</p>
+                  <p className="text-red-900 text-sm font-bold">
+                    {textverouil}
+                  </p>
                   <div className=" text-green-400 border-none bg-green-200 badge badge-success font-bold ">
                     {NewScore}/20
                   </div>

@@ -1,0 +1,101 @@
+const chapitre1_CM2 = {
+  Mathématique: [
+    {
+      id: 1,
+      title: "Calcul mental",
+      question: "Calcule : 125 + 237 = ?",
+      result: "362",
+      infoErro: "La bonne réponse était : 362.",
+      infosucces: "125 + 237 = 362. Bien joué !",
+      type: "input",
+    },
+    {
+      id: 2,
+      title: "Multiplication posée",
+      question: "Calcule : 48 × 12 = ?",
+      result: "576",
+      infoErro: "La bonne réponse était : 576.",
+      infosucces: "48 × 12 = 576. Bravo !",
+      type: "input",
+    },
+    {
+      id: 3,
+      title: "Soustraction avec retenue",
+      question: "Calcule : 1000 - 678 = ?",
+      result: "322",
+      infoErro: "La bonne réponse était : 322.",
+      infosucces: "1000 - 678 = 322. Super !",
+      type: "input",
+    },
+    {
+      id: 4,
+      title: "Nombre pair ou impair",
+      question: "Le nombre 357 est-il impair ?",
+      result: "vrai",
+      infoErro: "La bonne réponse était : vrai.",
+      infosucces: "Oui, 357 est impair.",
+      type: "booleen",
+    },
+    {
+      id: 5,
+      title: "Problème simple",
+      question:
+        "Un paquet contient 8 stylos. Combien de stylos dans 5 paquets ?",
+      result: "40",
+      infoErro: "La bonne réponse était : 40.",
+      infosucces: "8 × 5 = 40 stylos. Bien vu !",
+      type: "input",
+    },
+  ],
+  Français: [
+    {
+      id: 1,
+      title: "Conjugaison - futur simple",
+      question:
+        "Conjugue le verbe 'voir' à la 2ème personne du singulier au futur.",
+      result: "tu verras",
+      infoErro: "La bonne réponse était : tu verras.",
+      infosucces: "Tu verras. Très bien !",
+      type: "input",
+    },
+    {
+      id: 2,
+      title: "Orthographe - accord pluriel",
+      question: "La phrase « Les enfant jouent. » est-elle correcte ?",
+      result: "faux",
+      infoErro: "La bonne réponse était : faux.",
+      infosucces: "Il manque un S à « enfants ».",
+      type: "booleen",
+    },
+    {
+      id: 3,
+      title: "Nature des mots",
+      question: "Dans la phrase « Le chat mange », quel est le verbe ?",
+      result: "mange",
+      infoErro: "La bonne réponse était : mange.",
+      infosucces: "Le verbe est « mange ».",
+      type: "input",
+    },
+    {
+      id: 4,
+      title: "Compréhension",
+      question:
+        "La phrase « Il pleut, mais je sors quand même » exprime une opposition ?",
+      result: "vrai",
+      infoErro: "La bonne réponse était : vrai.",
+      infosucces: "Oui, « mais » introduit une opposition.",
+      type: "booleen",
+    },
+    {
+      id: 5,
+      title: "Synonyme",
+      question: "Quel est un synonyme de « terminer » ?",
+      result: "finir",
+      infoErro: "La bonne réponse était : finir.",
+      infosucces: "Terminer = finir. Bravo !",
+      type: "input",
+    },
+  ],
+};
+
+export default chapitre1_CM2;

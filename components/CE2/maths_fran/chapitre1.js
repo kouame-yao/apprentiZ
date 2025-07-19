@@ -1,0 +1,102 @@
+const chapitre1_CE2 = {
+  Mathématique: [
+    {
+      id: 1,
+      title: "Additions avec retenue",
+      question: "Calcule : 27 + 35 = ?",
+      result: "62",
+      infoErro: "La bonne réponse était : 62.",
+      infosucces: "27 + 35 = 62. Bravo !",
+      type: "input",
+    },
+    {
+      id: 2,
+      title: "Soustractions avec retenue",
+      question: "Calcule : 54 - 28 = ?",
+      result: "26",
+      infoErro: "La bonne réponse était : 26.",
+      infosucces: "54 - 28 = 26. Bien joué !",
+      type: "input",
+    },
+    {
+      id: 3,
+      title: "Problème simple",
+      question: "Paul a 40 billes, il en perd 15. Combien lui en reste-t-il ?",
+      result: "25",
+      infoErro: "La bonne réponse était : 25.",
+      infosucces: "40 - 15 = 25. Très bien !",
+      type: "input",
+    },
+    {
+      id: 4,
+      title: "Multiples et diviseurs",
+      question: "Le nombre 36 est-il divisible par 6 ?",
+      result: "vrai",
+      infoErro: "La bonne réponse était : vrai.",
+      infosucces: "Oui, 36 est divisible par 6.",
+      type: "booleen",
+    },
+    {
+      id: 5,
+      title: "Compléter la suite",
+      question: "Complète la suite : 5, 10, 20, 40, __",
+      result: "80",
+      infoErro: "La bonne réponse était : 80.",
+      infosucces: "La suite double à chaque fois.",
+      type: "input",
+    },
+  ],
+  Français: [
+    {
+      id: 1,
+      title: "Nature des mots",
+      question:
+        "Dans la phrase « La petite fille court vite », quel est l’adjectif ?",
+      result: "petite",
+      infoErro: "La bonne réponse était : petite.",
+      infosucces: "« petite » est un adjectif.",
+      type: "input",
+    },
+    {
+      id: 2,
+      title: "Conjugaison - présent",
+      question:
+        "Conjugue le verbe 'manger' à la 3ème personne du singulier au présent.",
+      result: "mange",
+      infoErro: "La bonne réponse était : mange.",
+      infosucces: "Il/Elle mange.",
+      type: "input",
+    },
+    {
+      id: 3,
+      title: "Orthographe",
+      question: "Quelle est la bonne orthographe ?",
+      result: "école",
+      infoErro: "La bonne réponse était : école.",
+      infosucces: "Le mot correct est école.",
+      type: "choix",
+      option: ["école", "ecole", "écolle", "ecolle", "écoule"],
+    },
+    {
+      id: 4,
+      title: "Accord du verbe",
+      question:
+        "La phrase « Les enfants joue dans le parc » est-elle correcte ?",
+      result: "faux",
+      infoErro: "La bonne réponse était : faux.",
+      infosucces: "Le verbe doit être au pluriel : jouent.",
+      type: "booleen",
+    },
+    {
+      id: 5,
+      title: "Trouver le sujet",
+      question: "Dans la phrase « Le chien aboie », quel est le sujet ?",
+      result: "chien",
+      infoErro: "La bonne réponse était : chien.",
+      infosucces: "« chien » est le sujet.",
+      type: "input",
+    },
+  ],
+};
+
+export default chapitre1_CE2;

@@ -1,0 +1,101 @@
+const chapitre2_CE2 = {
+  Mathématique: [
+    {
+      id: 1,
+      title: "Multiplication simple",
+      question: "Combien font 6 × 7 ?",
+      result: "42",
+      infoErro: "La bonne réponse était : 42.",
+      infosucces: "6 × 7 = 42. Bravo !",
+      type: "input",
+    },
+    {
+      id: 2,
+      title: "Division simple",
+      question: "Combien font 56 ÷ 8 ?",
+      result: "7",
+      infoErro: "La bonne réponse était : 7.",
+      infosucces: "56 ÷ 8 = 7. Bien joué !",
+      type: "input",
+    },
+    {
+      id: 3,
+      title: "Problème avec multiplication",
+      question:
+        "Un paquet contient 9 biscuits. Combien y en a-t-il dans 5 paquets ?",
+      result: "45",
+      infoErro: "La bonne réponse était : 45.",
+      infosucces: "9 × 5 = 45 biscuits.",
+      type: "input",
+    },
+    {
+      id: 4,
+      title: "Vrai ou faux : multiples",
+      question: "Le nombre 45 est un multiple de 9.",
+      result: "vrai",
+      infoErro: "La bonne réponse était : vrai.",
+      infosucces: "Oui, 45 est divisible par 9.",
+      type: "booleen",
+    },
+    {
+      id: 5,
+      title: "Compléter la suite géométrique",
+      question: "Complète : 3, 6, 12, 24, __",
+      result: "48",
+      infoErro: "La bonne réponse était : 48.",
+      infosucces: "Chaque nombre est multiplié par 2.",
+      type: "input",
+    },
+  ],
+  Français: [
+    {
+      id: 1,
+      title: "Temps des verbes",
+      question:
+        "Mettre le verbe 'finir' au passé composé, 3e personne du singulier.",
+      result: "a fini",
+      infoErro: "La bonne réponse était : a fini.",
+      infosucces: "Il/Elle a fini.",
+      type: "input",
+    },
+    {
+      id: 2,
+      title: "Accord de l’adjectif",
+      question: "Quel est le féminin d’'heureux' ?",
+      result: "heureuse",
+      infoErro: "La bonne réponse était : heureuse.",
+      infosucces: "Le féminin est heureuse.",
+      type: "input",
+    },
+    {
+      id: 3,
+      title: "Synonyme",
+      question: "Trouve un synonyme du mot 'rapide'.",
+      result: "vite",
+      infoErro: "La bonne réponse était : vite.",
+      infosucces: "« vite » est un synonyme de rapide.",
+      type: "input",
+    },
+    {
+      id: 4,
+      title: "Phrase correcte ?",
+      question: "La phrase « Nous avons mange une glace » est correcte ?",
+      result: "faux",
+      infoErro: "La bonne réponse était : faux.",
+      infosucces: "Il manque l’accent : « mangé ».",
+      type: "booleen",
+    },
+    {
+      id: 5,
+      title: "Trouver le complément",
+      question:
+        "Dans la phrase « Le chat mange la souris », quel est le complément d’objet ?",
+      result: "la souris",
+      infoErro: "La bonne réponse était : la souris.",
+      infosucces: "« la souris » est le complément d’objet.",
+      type: "input",
+    },
+  ],
+};
+
+export default chapitre2_CE2;

@@ -1,6 +1,46 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Wrapper from "../../../../components/Wrapper";
+// CP1
+import CP1exercice5 from "../../../../components/CP1/maths/chapitrefive";
+import CP1exercice4 from "../../../../components/CP1/maths/chapitrefor";
+import CP1exercice1 from "../../../../components/CP1/maths/chapitreone";
+import CP1exercice3 from "../../../../components/CP1/maths/chapitretree";
+import CP1exercice2 from "../../../../components/CP1/maths/chapitretwo";
+// CP2
+import chapitre5_CP2 from "../../../../components/CP2/maths_fran/chapitrefive";
+import chapitre4_CP2 from "../../../../components/CP2/maths_fran/chapitrefor";
+import chapitre1_CP2 from "../../../../components/CP2/maths_fran/chapitreone";
+import chapitre2_CP2 from "../../../../components/CP2/maths_fran/chapitrestwo";
+import chapitre3_CP2 from "../../../../components/CP2/maths_fran/chapitretree";
+
+//CE1
+import chapitre1_CE1 from "../../../../components/CE1/maths_fran/chapitre1";
+import chapitre2_CE1 from "../../../../components/CE1/maths_fran/chapitre2";
+import chapitre3_CE1 from "../../../../components/CE1/maths_fran/chapitre3";
+import chapitre4_CE1 from "../../../../components/CE1/maths_fran/chapitre4";
+import chapitre5_CE1 from "../../../../components/CE1/maths_fran/chapitre5";
+
+// CE2
+import chapitre1_CE2 from "../../../../components/CE2/maths_fran/chapitre1";
+import chapitre2_CE2 from "../../../../components/CE2/maths_fran/chapitre2";
+import chapitre3_CE2 from "../../../../components/CE2/maths_fran/chapitre3";
+import chapitre4_CE2 from "../../../../components/CE2/maths_fran/chapitre4";
+import chapitre5_CE2 from "../../../../components/CE2/maths_fran/chapitre5";
+
+// CM1
+import chapitre1_CM1 from "../../../../components/CM1/maths_fran/chapitre1";
+import chapitre2_CM1 from "../../../../components/CM1/maths_fran/chapitre2";
+import chapitre3_CM1 from "../../../../components/CM1/maths_fran/chapitre3";
+import chapitre4_CM1 from "../../../../components/CM1/maths_fran/chapitre4";
+import chapitre5_CM1 from "../../../../components/CM1/maths_fran/chapitre5";
+
+// CM2
+import chapitre1_CM2 from "../../../../components/CM2/maths_fran/chapitre1";
+import chapitre2_CM2 from "../../../../components/CM2/maths_fran/chapitre2";
+import chapitre3_CM2 from "../../../../components/CM2/maths_fran/chapitre3";
+import chapitre4_CM2 from "../../../../components/CM2/maths_fran/chapitre4";
+import chapitre5_CM2 from "../../../../components/CM2/maths_fran/chapitre5";
 
 function Lecon() {
   const router = useRouter();
@@ -18,164 +58,48 @@ function Lecon() {
   const booleen = ["vrai", "faux"];
 
   const chapt = (lecon) => {
-    if (lecon === "1") return exercice[chapitre];
-    if (lecon === "2") return exercice2[chapitre];
-  };
+    //CP1
+    if (lecon === "1" && classe === "CP1") return CP1exercice1[chapitre];
+    if (lecon === "2" && classe === "CP1") return CP1exercice2[chapitre];
+    if (lecon === "3" && classe === "CP1") return CP1exercice3[chapitre];
+    if (lecon === "4" && classe === "CP1") return CP1exercice4[chapitre];
+    if (lecon === "5" && classe === "CP1") return CP1exercice5[chapitre];
 
-  const exercice2 = {
-    Mathématique: [
-      {
-        id: 1,
-        title: "Addition simple",
-        question: "Combien font 2 + 3 ?",
-        result: 5,
-        infoErro: "La bonne réponse était : 5.",
-        infosucces: "2 + 3 = 5. Bravo !",
-        type: "choix",
-        option: [4, 5, 6, 3, 7],
-      },
-      {
-        id: 2,
-        title: "Addition simple",
-        question: "Combien font 1 + 4 ?",
-        result: 5,
-        infoErro: "La bonne réponse était : 5.",
-        infosucces: "1 + 4 = 5. Tu progresses bien !",
-        type: "choix",
-        option: [2, 5, 6, 1, 3],
-      },
-      {
-        id: 3,
-        title: "Addition simple",
-        question: "3 + 3 = 6",
-        result: "vrai",
-        infoErro: "La bonne réponse était : vrai.",
-        infosucces: "Oui, 3 + 3 = 6. Bien joué !",
-        type: "booleen",
-      },
-      {
-        id: 4,
-        title: "Addition simple",
-        question: "Écris le résultat de 4 + 2",
-        result: "6",
-        infoErro: "La bonne réponse était : 6.",
-        infosucces: "4 + 2 = 6. Excellent !",
-        type: "input",
-      },
-      {
-        id: 5,
-        title: "Addition simple",
-        question: "Combien font 5 + 0 ?",
-        result: 5,
-        infoErro: "La bonne réponse était : 5.",
-        infosucces: "5 + 0 = 5. Tu es super fort !",
-        type: "choix",
-        option: [0, 10, 5, 6, 4],
-      },
-    ],
-  };
+    //CP2
+    if (lecon === "1" && classe === "CP2") return chapitre1_CP2[chapitre];
+    if (lecon === "2" && classe === "CP2") return chapitre2_CP2[chapitre];
+    if (lecon === "3" && classe === "CP2") return chapitre3_CP2[chapitre];
+    if (lecon === "4" && classe === "CP2") return chapitre4_CP2[chapitre];
+    if (lecon === "5" && classe === "CP2") return chapitre5_CP2[chapitre];
 
-  const exercice = {
-    Mathématique: [
-      {
-        id: 1,
-        title: "Les nombres de 0 à 10",
-        question: "Combien font 3 + 2 ?",
-        result: 5,
-        infoErro: "La bonne réponse était : 5.",
-        infosucces: "3 + 2 = 5. Tu peux compter sur tes doigts !",
-        type: "choix",
-        option: [4, 8, 6, 7, 5],
-      },
-      {
-        id: 2,
-        title: "Les nombres de 0 à 10",
-        question: "Quel nombre vient après 7 ?",
-        result: 8,
-        infoErro: "La bonne réponse était : 8.",
-        infosucces: "Après 7 vient 8 dans l'ordre des nombres.",
-        type: "choix",
-        option: [10, 8, 6, 9, 5],
-      },
-      {
-        id: 3,
-        title: "Les nombres de 0 à 10",
-        question: "5 est plus grand que 3",
-        result: "vrai",
-        infoErro: "La bonne réponse était : vrai.",
-        infosucces: "C'est vrai ! 5 est plus grand que 3.",
-        type: "booleen",
-      },
-      {
-        id: 4,
-        title: "Les nombres de 0 à 10",
-        question: "Écris le nombre qui vient avant 6",
-        result: "5",
-        infoErro: "La bonne réponse était : 5.",
-        infosucces: "Le nombre qui vient avant 6 est 5.",
-        type: "input",
-      },
-      {
-        id: 5,
-        title: "Les nombres de 0 à 10",
-        question: "Combien font 4 + 1?",
-        result: 5,
-        infoErro: "La bonne réponse était : 5.",
-        infosucces: "4 + 1 = 5. Bravo !",
-        type: "choix",
-        option: [4, 8, 6, 7, 5],
-      },
-    ],
+    // CE1
+    if (lecon === "1" && classe === "CE1") return chapitre1_CE1[chapitre];
+    if (lecon === "2" && classe === "CE1") return chapitre2_CE1[chapitre];
+    if (lecon === "3" && classe === "CE1") return chapitre3_CE1[chapitre];
+    if (lecon === "4" && classe === "CE1") return chapitre4_CE1[chapitre];
+    if (lecon === "5" && classe === "CE1") return chapitre5_CE1[chapitre];
 
-    Français: [
-      {
-        id: 1,
-        title: "Les lettres de l’alphabet",
-        question: "Quelle lettre vient après B ?",
-        result: "C",
-        infoErro: "La bonne réponse était : C.",
-        infosucces: "Bravo ! Après B vient C dans l’alphabet.",
-        type: "choix",
-        option: ["D", "A", "E", "C", "F"],
-      },
-      {
-        id: 2,
-        title: "Les lettres de l’alphabet",
-        question: "La lettre A est-elle une voyelle ?",
-        result: "vrai",
-        infoErro: "La bonne réponse était : vrai.",
-        infosucces: "Oui ! A est une voyelle.",
-        type: "booleen",
-      },
-      {
-        id: 3,
-        title: "Les lettres de l’alphabet",
-        question: "Écris la première lettre de l’alphabet",
-        result: "A",
-        infoErro: "La bonne réponse était : A.",
-        infosucces: "A est la première lettre de l’alphabet.",
-        type: "input",
-      },
-      {
-        id: 4,
-        title: "Les lettres de l’alphabet",
-        question: "Quelle lettre vient avant D ?",
-        result: "C",
-        infoErro: "La bonne réponse était : C.",
-        infosucces: "Bien joué ! Avant D, il y a C.",
-        type: "choix",
-        option: ["B", "C", "E", "F", "G"],
-      },
-      {
-        id: 5,
-        title: "Les lettres de l’alphabet",
-        question: "Z est la dernière lettre de l’alphabet",
-        result: "vrai",
-        infoErro: "La bonne réponse était : vrai.",
-        infosucces: "Oui ! L’alphabet se termine par Z.",
-        type: "booleen",
-      },
-    ],
+    // CE2
+
+    if (lecon === "1" && classe === "CE2") return chapitre1_CE2[chapitre];
+    if (lecon === "2" && classe === "CE2") return chapitre2_CE2[chapitre];
+    if (lecon === "3" && classe === "CE2") return chapitre3_CE2[chapitre];
+    if (lecon === "4" && classe === "CE2") return chapitre4_CE2[chapitre];
+    if (lecon === "5" && classe === "CE2") return chapitre5_CE2[chapitre];
+
+    // CM1
+    if (lecon === "1" && classe === "CM1") return chapitre1_CM1[chapitre];
+    if (lecon === "2" && classe === "CM1") return chapitre2_CM1[chapitre];
+    if (lecon === "3" && classe === "CM1") return chapitre3_CM1[chapitre];
+    if (lecon === "4" && classe === "CM1") return chapitre4_CM1[chapitre];
+    if (lecon === "5" && classe === "CM1") return chapitre5_CM1[chapitre];
+
+    // CM2
+    if (lecon === "1" && classe === "CM2") return chapitre1_CM2[chapitre];
+    if (lecon === "2" && classe === "CM2") return chapitre2_CM2[chapitre];
+    if (lecon === "3" && classe === "CM2") return chapitre3_CM2[chapitre];
+    if (lecon === "4" && classe === "CM2") return chapitre4_CM2[chapitre];
+    if (lecon === "5" && classe === "CM2") return chapitre5_CM2[chapitre];
   };
 
   const chapExo = chapt(lecon);
@@ -330,7 +254,16 @@ function Lecon() {
                     <div>
                       <button
                         onClick={valide}
-                        className="bg-gray-300 cursor-pointer  mt-4 text-lg font-bold text-white px-5 py-3 w-50 rounded-4xl"
+                        disabled={
+                          exoer?.type === "choix"
+                            ? !TextValue
+                            : !inputValue || exoer?.type === "booleen"
+                            ? !TextValue
+                            : !inputValue || exoer?.type === "input"
+                            ? !inputValue
+                            : !TextValue
+                        }
+                        className="bg-blue-500 cursor-pointer disabled:bg-gray-50 mt-4 text-lg font-bold text-white px-5 py-3 w-50 rounded-4xl"
                       >
                         Valider
                       </button>
@@ -379,10 +312,10 @@ function Lecon() {
             </div>
           </section>
 
-          <section className="px-10 grid justify-center items-center mb-20">
+          <section className="px-10 grid justify-center items-center mb-20 ">
             <div
               onClick={() => router.push(`/classe/${classe}`)}
-              className="text-white  px-4 text-lg font-bold bg-gray-600 p-2 rounded-3xl text-center w-60"
+              className="text-white px-4 text-lg font-bold bg-gray-600 p-2 rounded-3xl text-center w-60"
             >
               ⬅️ Retour aux chapitres
             </div>

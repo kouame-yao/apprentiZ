@@ -1,0 +1,103 @@
+const chapitre3_CE1 = {
+  Mathématique: [
+    {
+      id: 1,
+      title: "Addition et décomposition",
+      question: "Décompose 13 en deux nombres dont la somme est 13.",
+      result: ["7", "6"],
+      infoErro: "La bonne réponse était : 7 et 6.",
+      infosucces: "7 + 6 = 13. Bien joué !",
+      type: "input",
+    },
+    {
+      id: 2,
+      title: "Problème avec des objets",
+      question:
+        "Léa a 10 pommes, elle en donne 4 à son ami. Combien lui reste-t-il ?",
+      result: "6",
+      infoErro: "La bonne réponse était : 6.",
+      infosucces: "10 - 4 = 6. Bravo !",
+      type: "input",
+    },
+    {
+      id: 3,
+      title: "Multiples de 5",
+      question: "Quel nombre est un multiple de 5 ?",
+      result: "20",
+      infoErro: "La bonne réponse était : 20.",
+      infosucces: "20 est un multiple de 5.",
+      type: "choix",
+      option: ["18", "17", "20", "22", "23"],
+    },
+    {
+      id: 4,
+      title: "Comparer des nombres",
+      question: "Est-ce que 25 est plus grand que 30 ?",
+      result: "faux",
+      infoErro: "La bonne réponse était : faux.",
+      infosucces: "Non, 25 est plus petit que 30.",
+      type: "booleen",
+    },
+    {
+      id: 5,
+      title: "Résoudre l’addition",
+      question: "Résous : 8 + 15 = ?",
+      result: "23",
+      infoErro: "La bonne réponse était : 23.",
+      infosucces: "8 + 15 = 23.",
+      type: "input",
+    },
+  ],
+  Français: [
+    {
+      id: 1,
+      title: "Identifier le verbe",
+      question: "Dans la phrase « Le chat dort », quel est le verbe ?",
+      result: "dort",
+      infoErro: "La bonne réponse était : dort.",
+      infosucces: "« dort » est le verbe.",
+      type: "input",
+    },
+    {
+      id: 2,
+      title: "Trouver le pluriel",
+      question: "Quel est le pluriel du mot 'chien' ?",
+      result: "chiens",
+      infoErro: "La bonne réponse était : chiens.",
+      infosucces: "Le pluriel de chien est chiens.",
+      type: "input",
+    },
+    {
+      id: 3,
+      title: "Compréhension courte",
+      question:
+        "Que fait le garçon dans la phrase : « Le garçon court vite. » ?",
+      result: "court",
+      infoErro: "La bonne réponse était : court.",
+      infosucces: "Le garçon court vite.",
+      type: "input",
+    },
+    {
+      id: 4,
+      title: "Phrase correcte ?",
+      question:
+        "Est-ce que cette phrase est correcte : « Les fleurs est belles » ?",
+      result: "faux",
+      infoErro: "La bonne réponse était : faux.",
+      infosucces: "Il faut dire « Les fleurs sont belles ».",
+      type: "booleen",
+    },
+    {
+      id: 5,
+      title: "Trouve le mot",
+      question: "Quel mot est un adjectif ?",
+      result: "grand",
+      infoErro: "La bonne réponse était : grand.",
+      infosucces: "« grand » est un adjectif.",
+      type: "choix",
+      option: ["chat", "courir", "grand", "manger", "maison"],
+    },
+  ],
+};
+
+export default chapitre3_CE1;

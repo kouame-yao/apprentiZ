@@ -1,7 +1,12 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Wrapper from "../../../components/Wrapper";
-
+// CP1
+import CP1exercice5 from "../../../components/CP1/maths/chapitrefive";
+import CP1exercice4 from "../../../components/CP1/maths/chapitrefor";
+import CP1exercice1 from "../../../components/CP1/maths/chapitreone";
+import CP1exercice3 from "../../../components/CP1/maths/chapitretree";
+import CP1exercice2 from "../../../components/CP1/maths/chapitretwo";
 export default function Classe() {
   const [MatierePage, setMatierePage] = useState("Mathématique");
   const [Score, setscore] = useState({});
@@ -23,22 +28,27 @@ export default function Classe() {
       {
         id: 1,
         chapitre: "chapitre 1",
+        div: "chapitre1",
       },
       {
         id: 2,
         chapitre: "chapitre 2",
+        div: "chapitre2",
       },
       {
         id: 3,
         chapitre: "chapitre 3",
+        div: "chapitre3",
       },
       {
         id: 4,
         chapitre: "chapitre 4",
+        div: "chapitre4",
       },
       {
         id: 5,
         chapitre: "chapitre 5",
+        div: "chapitre5",
       },
     ],
     Français: [
@@ -64,6 +74,26 @@ export default function Classe() {
       },
     ],
   };
+
+  const getChapitreLengths = () => {
+    if (classeId.id === "CP1") {
+      return {
+        chapitre1: CP1exercice1[MatierePage]?.length || 0,
+        chapitre2: CP1exercice2[MatierePage]?.length || 0,
+        chapitre3: CP1exercice3[MatierePage]?.length || 0,
+        chapitre4: CP1exercice4[MatierePage]?.length || 0,
+        chapitre5: CP1exercice5[MatierePage]?.length || 0,
+      };
+    }
+    // Ajouter d'autres classes ici si nécessaire
+    return {};
+  };
+
+  const chapitreLengths = getChapitreLengths();
+
+  // Si tu veux la somme de tous les exercices :
+  const totalExos = Object.values(chapitreLengths).reduce((a, b) => a + b, 0);
+  console.log("Total exercices :", totalExos);
 
   useEffect(() => {
     const raw = localStorage.getItem(`score${classeId.id}`);
@@ -117,7 +147,7 @@ export default function Classe() {
     return (
       data[matiere] &&
       data[matiere][chapitrePrecedent] &&
-      data[matiere][chapitrePrecedent] > 10
+      data[matiere][chapitrePrecedent] > 5
     );
   };
 
@@ -192,6 +222,8 @@ export default function Classe() {
               if (NewScore > 0) {
                 text = "Recommencer";
               }
+              let textverouil = "";
+
               if (active) {
                 textbtn = "text-white";
                 bgbtn = "bg-green-400";
@@ -205,14 +237,12 @@ export default function Classe() {
                 iconik = "🔒";
                 unklow =
                   "bg-white pointer-events-none cursor-not-allowed opacity-50 ";
-              }
-              let textverouil = "";
-              if (item.chapitre == "chapitre 1") {
-                textverouil;
-              } else if (NewScore < 10) {
+
                 textverouil =
-                  "Tu dois avoir plus de 10 points pour débloquer ce chapitre.";
+                  "Tu dois avoir plus de 5 points pour débloquer le chapitre suivant.";
               }
+
+              const divodent = chapitreLengths[`chapitre${item.id}`];
               return (
                 <div
                   onClick={() =>
@@ -232,7 +262,7 @@ export default function Classe() {
                     {textverouil}
                   </p>
                   <div className=" text-green-400 border-none bg-green-200 badge badge-success font-bold ">
-                    {NewScore}/20
+                    {NewScore}/{divodent * 4}
                   </div>
                   <button
                     className={`btn cursor-pointer ${bgbtn} ${textbtn} rounded-md  border-none btn-success font-bold`}

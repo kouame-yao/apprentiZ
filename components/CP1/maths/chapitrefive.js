@@ -89,11 +89,11 @@ const CP1exercice5 = {
       id: 10,
       title: "Compter jusqu'à 20",
       question: "Compte les ballons : 🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈",
-      result: 18,
+      result: "18",
       infoErro: "La bonne réponse était : 18.",
       infosucces: "Parfait ! Il y a 18 ballons 🎈. Tu comptes très bien !",
       type: "choix",
-      option: [16, 17, 18, 19, 20],
+      option: ["16", "17", "18", "19", "20"],
     },
   ],
 

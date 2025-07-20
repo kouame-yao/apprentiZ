@@ -113,8 +113,8 @@ function Lecon() {
 
   const valide = () => {
     if (
-      exoer?.result === inputValue.trim() ||
-      exoer?.result === TextValue.trim()
+      exoer?.result.toLowerCase() === inputValue.trim?.().toLowerCase() ||
+      exoer?.result.toLowerCase() === TextValue?.trim?.().toLowerCase()
     ) {
       setScore((prev) => prev + 4);
       setValues(true);
@@ -331,9 +331,7 @@ function Lecon() {
             <h1 className="text-2xl font-bold">Chapitre terminé !</h1>
             <span>{exoer?.title ?? "Résumé"}</span>
             <div className="bg-blue-300 w-full p-6 rounded-lg">
-              <span className="text-5xl font-bold text-blue-800">
-                {score}/20
-              </span>
+              <span className="text-5xl font-bold text-blue-800">{score}</span>
               <p className="text-violet-700">{getScoreMessage(score)}</p>
             </div>
             <div className="grid gap-4 text-white font-bold text-lg">

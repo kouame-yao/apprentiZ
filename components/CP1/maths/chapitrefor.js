@@ -122,7 +122,7 @@ const CP1exercice4 = {
       id: 3,
       title: "Premiers mots",
       question: "Lis ce mot : CHAT 🐱",
-      result: "chat",
+      result: ["chat"],
       infoErro: "La bonne réponse était : chat.",
       infosucces: "Excellent ! Tu as lu CHAT. C-H-A-T = chat 🐱.",
       type: "choix",

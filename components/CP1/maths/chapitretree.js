@@ -112,7 +112,7 @@ const CP1exercice3 = {
       id: 2,
       title: "Lecture de syllabes",
       question: "Comment se lit la syllabe : LI ?",
-      result: "li",
+      result: ["li"],
       infoErro: "La bonne réponse était : LI se lit 'li'.",
       infosucces: "Excellent ! LI se lit 'li' comme dans livre.",
       type: "choix",

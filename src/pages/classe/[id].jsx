@@ -7,6 +7,41 @@ import CP1exercice4 from "../../../components/CP1/maths/chapitrefor";
 import CP1exercice1 from "../../../components/CP1/maths/chapitreone";
 import CP1exercice3 from "../../../components/CP1/maths/chapitretree";
 import CP1exercice2 from "../../../components/CP1/maths/chapitretwo";
+// CP2
+import chapitre5_CP2 from "../../../components/CP2/maths_fran/chapitrefive";
+import chapitre4_CP2 from "../../../components/CP2/maths_fran/chapitrefor";
+import chapitre1_CP2 from "../../../components/CP2/maths_fran/chapitreone";
+import chapitre2_CP2 from "../../../components/CP2/maths_fran/chapitrestwo";
+import chapitre3_CP2 from "../../../components/CP2/maths_fran/chapitretree";
+
+//CE1
+import chapitre1_CE1 from "../../../components/CE1/maths_fran/chapitre1";
+import chapitre2_CE1 from "../../../components/CE1/maths_fran/chapitre2";
+import chapitre3_CE1 from "../../../components/CE1/maths_fran/chapitre3";
+import chapitre4_CE1 from "../../../components/CE1/maths_fran/chapitre4";
+import chapitre5_CE1 from "../../../components/CE1/maths_fran/chapitre5";
+
+// CE2
+import chapitre1_CE2 from "../../../components/CE2/maths_fran/chapitre1";
+import chapitre2_CE2 from "../../../components/CE2/maths_fran/chapitre2";
+import chapitre3_CE2 from "../../../components/CE2/maths_fran/chapitre3";
+import chapitre4_CE2 from "../../../components/CE2/maths_fran/chapitre4";
+import chapitre5_CE2 from "../../../components/CE2/maths_fran/chapitre5";
+
+// CM1
+import chapitre1_CM1 from "../../../components/CM1/maths_fran/chapitre1";
+import chapitre2_CM1 from "../../../components/CM1/maths_fran/chapitre2";
+import chapitre3_CM1 from "../../../components/CM1/maths_fran/chapitre3";
+import chapitre4_CM1 from "../../../components/CM1/maths_fran/chapitre4";
+import chapitre5_CM1 from "../../../components/CM1/maths_fran/chapitre5";
+
+// CM2
+import chapitre1_CM2 from "../../../components/CM2/maths_fran/chapitre1";
+import chapitre2_CM2 from "../../../components/CM2/maths_fran/chapitre2";
+import chapitre3_CM2 from "../../../components/CM2/maths_fran/chapitre3";
+import chapitre4_CM2 from "../../../components/CM2/maths_fran/chapitre4";
+import chapitre5_CM2 from "../../../components/CM2/maths_fran/chapitre5";
+
 export default function Classe() {
   const [MatierePage, setMatierePage] = useState("Mathématique");
   const [Score, setscore] = useState({});
@@ -84,6 +119,46 @@ export default function Classe() {
         chapitre4: CP1exercice4[MatierePage]?.length || 0,
         chapitre5: CP1exercice5[MatierePage]?.length || 0,
       };
+    } else if (classeId.id === "CP2") {
+      return {
+        chapitre1: chapitre1_CP2[MatierePage]?.length || 0,
+        chapitre2: chapitre1_CP2[MatierePage]?.length || 0,
+        chapitre3: chapitre1_CP2[MatierePage]?.length || 0,
+        chapitre4: chapitre1_CP2[MatierePage]?.length || 0,
+        chapitre5: chapitre1_CP2[MatierePage]?.length || 0,
+      };
+    } else if (classeId.id === "CE1") {
+      return {
+        chapitre1: chapitre1_CE1[MatierePage]?.length || 0,
+        chapitre2: chapitre1_CE1[MatierePage]?.length || 0,
+        chapitre3: chapitre1_CE1[MatierePage]?.length || 0,
+        chapitre4: chapitre1_CE1[MatierePage]?.length || 0,
+        chapitre5: chapitre1_CE1[MatierePage]?.length || 0,
+      };
+    } else if (classeId.id === "CE2") {
+      return {
+        chapitre1: chapitre1_CE2[MatierePage]?.length || 0,
+        chapitre2: chapitre1_CE2[MatierePage]?.length || 0,
+        chapitre3: chapitre1_CE2[MatierePage]?.length || 0,
+        chapitre4: chapitre1_CE2[MatierePage]?.length || 0,
+        chapitre5: chapitre1_CE2[MatierePage]?.length || 0,
+      };
+    } else if (classeId.id === "CM1") {
+      return {
+        chapitre1: chapitre1_CM1[MatierePage]?.length || 0,
+        chapitre2: chapitre1_CM1[MatierePage]?.length || 0,
+        chapitre3: chapitre1_CM1[MatierePage]?.length || 0,
+        chapitre4: chapitre1_CM1[MatierePage]?.length || 0,
+        chapitre5: chapitre1_CM1[MatierePage]?.length || 0,
+      };
+    } else if (classeId.id === "CM2") {
+      return {
+        chapitre1: chapitre1_CM2[MatierePage]?.length || 0,
+        chapitre2: chapitre1_CM2[MatierePage]?.length || 0,
+        chapitre3: chapitre1_CM2[MatierePage]?.length || 0,
+        chapitre4: chapitre1_CM2[MatierePage]?.length || 0,
+        chapitre5: chapitre1_CM2[MatierePage]?.length || 0,
+      };
     }
     // Ajouter d'autres classes ici si nécessaire
     return {};
@@ -93,7 +168,6 @@ export default function Classe() {
 
   // Si tu veux la somme de tous les exercices :
   const totalExos = Object.values(chapitreLengths).reduce((a, b) => a + b, 0);
-  console.log("Total exercices :", totalExos);
 
   useEffect(() => {
     const raw = localStorage.getItem(`score${classeId.id}`);
@@ -218,9 +292,9 @@ export default function Classe() {
               let text = "Commencer";
               let bgbtn;
               let textbtn;
-
+              let bgbtnRe;
               if (NewScore > 0) {
-                text = "Recommencer";
+                bgbtnRe = "bg-red-400";
               }
               let textverouil = "";
 
@@ -265,7 +339,7 @@ export default function Classe() {
                     {NewScore}/{divodent * 4}
                   </div>
                   <button
-                    className={`btn cursor-pointer ${bgbtn} ${textbtn} rounded-md  border-none btn-success font-bold`}
+                    className={`btn cursor-pointer ${bgbtn} ${textbtn}  rounded-md  border-none btn-success font-bold`}
                   >
                     {text}
                   </button>

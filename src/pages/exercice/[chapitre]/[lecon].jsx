@@ -112,9 +112,13 @@ function Lecon() {
   const pourcentage = (net / lengh) * 100;
 
   const valide = () => {
+    const userAnswer = inputValue?.trim().toLowerCase();
+    const resultNormalized = exoer?.result.map((r) => r.trim().toLowerCase());
+    const userText = TextValue.trim().toLowerCase();
+
     if (
-      exoer?.result.toLowerCase() === inputValue.trim?.().toLowerCase() ||
-      exoer?.result.toLowerCase() === TextValue?.trim?.().toLowerCase()
+      resultNormalized.includes(userAnswer) ||
+      resultNormalized.includes(userText)
     ) {
       setScore((prev) => prev + 4);
       setValues(true);
@@ -291,7 +295,7 @@ function Lecon() {
                           <h1 className="text-red-800 font-bold">
                             Pas tout à fait...
                           </h1>
-                          <p className="text-red-600">{exoer?.infosucces}</p>
+                          {/* <p className="text-red-600">{exoer?.infosucces}</p> */}
                           <p className="text-red-600">{exoer?.infoErro}</p>
                         </div>
                       </div>

@@ -71,7 +71,7 @@ const CP1exercice5 = {
       id: 8,
       title: "Compter jusqu'à 20",
       question: "13 est plus petit que 18",
-      result: "vrai",
+      result: ["vrai"],
       infoErro: "La bonne réponse était : vrai.",
       infosucces: "C'est vrai ! 13 est plus petit que 18.",
       type: "booleen",

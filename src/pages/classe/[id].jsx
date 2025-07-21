@@ -50,9 +50,16 @@ export default function Classe() {
   const router = useRouter();
 
   const classeId = router.query;
-
+  useEffect(() => {
+    const raw = localStorage.getItem("Matiere");
+    if (raw) {
+      setMatierePage(raw);
+    }
+  }, []);
   const toggle = (mat) => {
+    localStorage.setItem("Matiere", mat);
     setMatierePage(mat);
+    console.log(mat);
   };
   const matiere = [
     { id: 1, matiere: "Mathématique", icon: "📊" },

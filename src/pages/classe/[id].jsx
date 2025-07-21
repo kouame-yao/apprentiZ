@@ -122,42 +122,42 @@ export default function Classe() {
     } else if (classeId.id === "CP2") {
       return {
         chapitre1: chapitre1_CP2[MatierePage]?.length || 0,
-        chapitre2: chapitre1_CP2[MatierePage]?.length || 0,
-        chapitre3: chapitre1_CP2[MatierePage]?.length || 0,
-        chapitre4: chapitre1_CP2[MatierePage]?.length || 0,
-        chapitre5: chapitre1_CP2[MatierePage]?.length || 0,
+        chapitre2: chapitre2_CP2[MatierePage]?.length || 0,
+        chapitre3: chapitre3_CP2[MatierePage]?.length || 0,
+        chapitre4: chapitre4_CP2[MatierePage]?.length || 0,
+        chapitre5: chapitre5_CP2[MatierePage]?.length || 0,
       };
     } else if (classeId.id === "CE1") {
       return {
         chapitre1: chapitre1_CE1[MatierePage]?.length || 0,
-        chapitre2: chapitre1_CE1[MatierePage]?.length || 0,
-        chapitre3: chapitre1_CE1[MatierePage]?.length || 0,
-        chapitre4: chapitre1_CE1[MatierePage]?.length || 0,
-        chapitre5: chapitre1_CE1[MatierePage]?.length || 0,
+        chapitre2: chapitre2_CE1[MatierePage]?.length || 0,
+        chapitre3: chapitre3_CE1[MatierePage]?.length || 0,
+        chapitre4: chapitre4_CE1[MatierePage]?.length || 0,
+        chapitre5: chapitre5_CE1[MatierePage]?.length || 0,
       };
     } else if (classeId.id === "CE2") {
       return {
         chapitre1: chapitre1_CE2[MatierePage]?.length || 0,
-        chapitre2: chapitre1_CE2[MatierePage]?.length || 0,
-        chapitre3: chapitre1_CE2[MatierePage]?.length || 0,
-        chapitre4: chapitre1_CE2[MatierePage]?.length || 0,
-        chapitre5: chapitre1_CE2[MatierePage]?.length || 0,
+        chapitre2: chapitre2_CE2[MatierePage]?.length || 0,
+        chapitre3: chapitre3_CE2[MatierePage]?.length || 0,
+        chapitre4: chapitre4_CE2[MatierePage]?.length || 0,
+        chapitre5: chapitre5_CE2[MatierePage]?.length || 0,
       };
     } else if (classeId.id === "CM1") {
       return {
         chapitre1: chapitre1_CM1[MatierePage]?.length || 0,
-        chapitre2: chapitre1_CM1[MatierePage]?.length || 0,
-        chapitre3: chapitre1_CM1[MatierePage]?.length || 0,
-        chapitre4: chapitre1_CM1[MatierePage]?.length || 0,
-        chapitre5: chapitre1_CM1[MatierePage]?.length || 0,
+        chapitre2: chapitre2_CM1[MatierePage]?.length || 0,
+        chapitre3: chapitre3_CM1[MatierePage]?.length || 0,
+        chapitre4: chapitre4_CM1[MatierePage]?.length || 0,
+        chapitre5: chapitre5_CM1[MatierePage]?.length || 0,
       };
     } else if (classeId.id === "CM2") {
       return {
         chapitre1: chapitre1_CM2[MatierePage]?.length || 0,
-        chapitre2: chapitre1_CM2[MatierePage]?.length || 0,
-        chapitre3: chapitre1_CM2[MatierePage]?.length || 0,
-        chapitre4: chapitre1_CM2[MatierePage]?.length || 0,
-        chapitre5: chapitre1_CM2[MatierePage]?.length || 0,
+        chapitre2: chapitre2_CM2[MatierePage]?.length || 0,
+        chapitre3: chapitre3_CM2[MatierePage]?.length || 0,
+        chapitre4: chapitre4_CM2[MatierePage]?.length || 0,
+        chapitre5: chapitre5_CM2[MatierePage]?.length || 0,
       };
     }
     // Ajouter d'autres classes ici si nécessaire
@@ -205,6 +205,15 @@ export default function Classe() {
   const moyenne = Pource && totalChapitres ? Pource / totalChapitres : 0;
   const totalPour = moyenne.toFixed(0);
 
+  const totalPoucen = (tot) => {
+    if (Number(tot) > 100) {
+      return Number(tot) - 20;
+    }
+    return Number(tot);
+  };
+
+  console.log();
+
   const isChapterUnlocked = (matiere, chapitreId) => {
     // Chapitre 1 est toujours accessible
     if (chapitreId === 1) return true;
@@ -239,12 +248,12 @@ export default function Classe() {
             </div>
             <div className="flex justify-between font-bold text-lg">
               <span>Progression générale</span>
-              <span>{totalPour} %</span>
+              <span>{totalPoucen(totalPour)} %</span>
             </div>
             <div className="p-2 rounded-3xl w-full bg-white">
               <div
                 className="p-2 rounded-3xl bg-blue-400"
-                style={{ width: `${totalPour}%` }}
+                style={{ width: `${totalPoucen(totalPour)}%` }}
               ></div>
             </div>
           </div>
@@ -294,7 +303,8 @@ export default function Classe() {
               let textbtn;
               let bgbtnRe;
               if (NewScore > 0) {
-                bgbtnRe = "bg-red-400";
+                text = "Recommencer ";
+                bgbtnRe = "bg-violet-800";
               }
               let textverouil = "";
 
@@ -339,7 +349,7 @@ export default function Classe() {
                     {NewScore}/{divodent * 4}
                   </div>
                   <button
-                    className={`btn cursor-pointer ${bgbtn} ${textbtn}  rounded-md  border-none btn-success font-bold`}
+                    className={`btn cursor-pointer ${bgbtn} ${textbtn} ${bgbtnRe}  rounded-md  border-none btn-success font-bold`}
                   >
                     {text}
                   </button>

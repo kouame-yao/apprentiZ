@@ -341,7 +341,7 @@ function Lecon() {
             <div className="grid gap-4 text-white font-bold text-lg">
               <button
                 onClick={() => router.push(`/classe/${classe}`)}
-                className="btn btn-success bg-green-500 border-none"
+                className="p-3 rounded-3xl mb-4 bg-green-500 border-none"
               >
                 Retour aux chapitres
               </button>
@@ -352,7 +352,7 @@ function Lecon() {
                   setValues(null);
                   settotal(true);
                 }}
-                className="btn btn-primary bg-blue-500 border-none"
+                className="p-3 rounded-3xl bg-blue-500 border-none"
               >
                 Recommencer l'exercice
               </button>

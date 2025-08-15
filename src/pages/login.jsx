@@ -6,7 +6,7 @@ function login() {
   const button = [{ name: "Se connecter" }, { name: "S'inscrire" }];
 
   return (
-    <main className="bg-white rounded-2xl px-4 py-10 space-y-6 md:px-10 md:py-16 h-auto max-w-md md:max-w-lg mx-4 md:mx-auto mt-10 md:mt-20">
+    <main className="bg-white rounded-2xl px-4 py-10 space-y-6 md:px-10 md:py-16 h-auto max-w-md md:max-w-lg mx-4 md:mx-auto mt-5 md:mt-20">
       <section className="grid space-y-8">
         <div className="grid text-center space-y-2 md:space-y-4">
           <div className="w-full grid justify-center place-items-center">

@@ -19,7 +19,7 @@ export default function Wrapper({
             onClick={() => router.push("/")}
           >
             <img
-              src="/kids.PNG"
+              src="/kids.png"
               alt="Enfants qui apprennent avec l'application"
               style={{
                 width: "40%",

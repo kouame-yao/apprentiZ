@@ -1,20 +1,37 @@
 import { useRouter } from "next/router";
 
-export default function Wrapper({ children, nav }) {
+export default function Wrapper({
+  children,
+  name,
+  button,
+  color,
+  textColor,
+  btnLogoutName,
+  btnLogoutClass,
+  btnLogoutClick,
+}) {
   const router = useRouter();
   return (
     <div>
       <main>
-        <div className="bg-white flex items-center justify-between px-3 p-4 md:p-6 md:px-30 shadow-lg">
+        <div className="bg-white flex items-center justify-between px-3 p-4 md:p-10 md:px-40 shadow-lg">
           <p
-            className="text-2xl font-bold cursor-pointer "
+            className="text-2xl md:text-5xl font-bold cursor-pointer "
             onClick={() => router.push("/")}
           >
-            EduKids
+            <img className="bg-white" width={100} src="/kids.PNG" alt="" />
           </p>
-          <button className="btn btn-primary rounded-3xl font-bold p-6 border-none text-lg text-white bg-green-500">
-            {nav}
-          </button>
+          <div className="flex gap-2 items-center">
+            <a
+              href={button}
+              className={`btn btn-primary md:rounded-full rounded-3xl font-bold p-6 md:p-8 border-none text-lg md:text-3xl ${textColor} ${color} `}
+            >
+              {name}
+            </a>
+            <button onClick={btnLogoutClick} className={btnLogoutClass}>
+              {btnLogoutName}
+            </button>
+          </div>
         </div>
       </main>
       <div className="mt-8"> {children} </div>

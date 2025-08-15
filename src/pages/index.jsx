@@ -1,17 +1,14 @@
+import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
+import { useContext } from "react";
 import Wrapper from "../../components/Wrapper";
+import { ApplicationContext } from "../../context/ApplicationContextProvider";
 
-function index() {
+function Index() {
+  const url = process.env.NEXT_PUBLIC_BASE_URL;
   const router = useRouter();
 
-  const Classe = [
-    { id: 1, classe: "CP1", bgCard: "bg-red-500", bgBtn: "bg-red-400" },
-    { id: 2, classe: "CP2", bgCard: "bg-blue-500", bgBtn: "bg-blue-400" },
-    { id: 3, classe: "CE1", bgCard: "bg-green-500", bgBtn: "bg-green-400" },
-    { id: 4, classe: "CE2", bgCard: "bg-yellow-500", bgBtn: "bg-yellow-400" },
-    { id: 5, classe: "CM1", bgCard: "bg-violet-500", bgBtn: "bg-violet-400" },
-    { id: 6, classe: "CM2", bgCard: "bg-red-300", bgBtn: "bg-red-200" },
-  ];
+  const { uid } = useContext(ApplicationContext);
 
   const extension = [
     {
@@ -33,81 +30,153 @@ function index() {
       textSpan: "Apprends en jouant avec des exercices amusants",
     },
   ];
+
+  const { isPending, error, data } = useQuery({
+    queryKey: ["repoData"],
+    queryFn: async () => {
+      if (!uid) {
+        throw new Error("UID manquant");
+      }
+      const res = await fetch(`${url}/api/getclasse/get`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ uid: uid }),
+      });
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.message || "Erreur inconnue");
+      }
+      return res.json();
+    },
+    staleTime: 1000 * 60 * 5, // 5 minutes avant de considérer les données "vieilles"
+    cacheTime: 1000 * 60 * 60,
+  });
+
+  if (isPending) {
+    return (
+      <div>
+        <div className="flex justify-center items-center min-h-96">
+          <div className="flex flex-col items-center gap-4">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-violet-500"></div>
+            <p className="text-lg font-semibold">Chargement...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  // if (error) return "Erreur : " + error.message;
+
+  const Classe = data?.table;
+
   return (
-    <Wrapper nav={"Se connecter"}>
-      <main className="space-y-15 grid justify-center items-center px-4 w-full">
-        <section className="grid justify-center w-full">
-          <div className="space-y-4 grid justify-center items-center text-center">
-            <h1 className="font-bold text-5xl md:text-6xl">
+    <Wrapper
+      name={uid ? "Mon profil" : "Se connecter"}
+      button={uid ? "/profil" : "/login"}
+      color={"bg-green-500"}
+      textColor={"text-white"}
+    >
+      <main className="  grid justify-center items-center px-4 w-full">
+        <section className="grid justify-center w-full mb-4">
+          <div className="space-y-8 grid justify-center items-center text-center">
+            <h1 className="font-bold text-5xl md:text-8xl">
               Apprendre en s'amusant ! 🎓
             </h1>
-            <p className=" text-lg text-gray-500 inline-block text-center break-words">
+            <p className="text-lg md:text-3xl text-gray-500 inline-block text-center break-words">
               Découvre les mathématiques et le français avec des exercices
               amusants adaptés à ton niveau !
             </p>
           </div>
         </section>
-
-        <section className="grid justify-center text-center">
-          <img src="/Capture.PNG" alt="" className="rounded-2xl" />
+        <section className="rounded-4xl w-full md:h-auto md:max-w-none md:scale-80">
+          <img
+            src="/Capture.PNG"
+            alt=""
+            className="rounded-2xl "
+            width={"100%"}
+          />
         </section>
 
-        <h1 className="text-3xl font-bold text-center ">
-          Choisis ta classe 🎒
-        </h1>
+        {Classe?.length === 0 ? (
+          <section className="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-lg text-center mt-8">
+            <h2 className="text-2xl font-bold mb-4">Aucune classe trouvée</h2>
+            <p className="text-gray-600 mb-6">
+              Il semble que vous n'avez pas encore créé de classe. Pour
+              commencer à utiliser l'application, veuillez créer une classe.
+            </p>
+            <button
+              onClick={() => router.push("/ajouter-exercice")}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Créer une classe
+            </button>
+          </section>
+        ) : (
+          <section className="grid space-y-8 mt-8 md:space-y-17">
+            {uid && (
+              <h1 className="text-3xl md:text-5xl font-bold text-center">
+                Choisis ta classe 🎒
+              </h1>
+            )}
+            <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-8">
+              {Classe?.map((item, index) => (
+                <div
+                  onClick={() => router.push(`classe/${item.nom}`)}
+                  key={index}
+                  className={`card ${item.Color} rounded-2xl md:px-50 md:h-100 w-full box-border shadow-xl hover:shadow-2xl cursor-pointer ${item.bgCard} transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-105  md:p-8`}
+                >
+                  <div className="card-body text-white h-full flex items-center justify-between">
+                    <div className="grid items-center text-center space-y-6">
+                      <span className="text-6xl md:text-8xl">📚</span>
+                      <div>
+                        <h1 className="text-4xl md:text-5xl font-bold mb-2">
+                          {item.id}
+                        </h1>
+                        <p className="text-xl md:text-2xl font-medium">
+                          {item.Descrip}
+                        </p>
+                      </div>
+                    </div>
 
-        <section className="">
-          <div className="grid md:grid-cols-3 gap-4 md:gap-8 ">
-            {Classe.map((item) => (
-              <div
-                onClick={() => router.push(`classe/${item.classe}`)}
-                key={item.id}
-                className={`card rounded-2xl md:w-100 shadow-md hover:shadow-lg cursor-pointer ${item.bgCard} transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110`}
-              >
-                <div className="card-body text-white space-y-3 text-center ">
-                  <span className="text-6xl">📚</span>
-                  <h1 className="text-3xl font-bold">{item.classe}</h1>
-                  <p className="text-lg whitespace-nowrap">
-                    Cours Préparatoire Première année
-                  </p>
-                  <div className="px-8">
-                    <button
-                      onClick={() => router.push(`classe/${item.classe}`)}
-                      className={`${item.bgBtn} cursor-pointer text-lg font-bold p-2 px-5  rounded-3xl`}
-                    >
-                      Commencer ➡️
-                    </button>
+                    <div>
+                      <button
+                        onClick={() => router.push(`classe/${item.nom}`)}
+                        className="bg-white/20 backdrop-blur-sm border-2  border-white/30 hover:bg-white/30 hover:border-white/50 shadow-xl rounded-full cursor-pointer text-lg md:text-2xl font-bold md:py-4 px-6 py-2 transition-all duration-300 md:hover:scale-105"
+                      >
+                        Commencer →
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="w-full flex justify-center items-center text-center  ">
-          <div className=" grid md:flex items-center justify-center gap-4 md:mx-20 w-full">
+              ))}
+            </div>
+          </section>
+        )}
+        <section className="w-full flex justify-center items-center text-center mt-10 md:mt-17">
+          <div className="grid md:flex items-center justify-center gap-4 md:mx-20 w-full">
             {extension.map((item, index) => (
               <div
                 key={index}
-                className=" card-body bg-white box-border rounded-2xl grid justify-center shadow-lg items-center text-center space-y-4 p-8"
+                className="card-body bg-white box-border rounded-2xl grid justify-center shadow-lg items-center  space-y-4 p-8"
               >
-                <span className="text-3xl">{item.icon}</span>
-                <h1 className="font-bold text-2xl">{item.textH1}</h1>
-                <p className="text-gray-500">{item.textSpan}</p>
+                <span className="text-3xl md:text-8xl">{item.icon}</span>
+                <h1 className="font-bold text-2xl md:text-5xl">
+                  {item.textH1}
+                </h1>
+                <p className="text-gray-500 md:text-2xl">{item.textSpan}</p>
               </div>
             ))}
           </div>
         </section>
       </main>
-
-      {/* footer */}
       <section>
         <div className="bg-white text-center p-8 mt-40">
-          © 2024 EduKids - Apprendre en s'amusant
+          © 2025 ApprentiZ - Apprendre en s'amusant
         </div>
       </section>
     </Wrapper>
   );
 }
 
-export default index;
+export default Index;

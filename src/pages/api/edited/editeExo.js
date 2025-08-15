@@ -41,6 +41,9 @@ export default async function handler(req, res) {
       infosucces: `Bravos ! La réponse à la question "${question}" est bien ${
         Array.isArray(result) ? result.join(", ") : result
       }`,
+      infoErro: `Désolé la bonne réponse était ${
+        Array.isArray(result) ? result.join(", ") : result
+      } tu peux faire mieux`,
       explication: explication,
     };
 

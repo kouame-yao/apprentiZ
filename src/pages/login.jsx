@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { useState } from "react";
 import Sign_up from "../../components/login/Sign_up";
 import Signe_in from "../../components/login/Signe_in";
-
 function login() {
   const [toggle, setToggle] = useState("Se connecter");
   const button = [{ name: "Se connecter" }, { name: "S'inscrire" }];

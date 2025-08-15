@@ -72,8 +72,6 @@ export default function Classe_eleve({ button }) {
 
   const [titreParMatiere, setTitreParMatiere] = useState({});
 
-  
-
   const { isPending, error, data, refetch } = useQuery({
     queryKey: ["repoData", uid],
     queryFn: async () => {
@@ -192,7 +190,9 @@ export default function Classe_eleve({ button }) {
         toast.success(data.message);
       }
 
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       toast.error(error.message);
     } finally {

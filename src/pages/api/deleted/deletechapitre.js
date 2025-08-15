@@ -2,7 +2,6 @@ import db from "../../../../Auth/firebase_admin";
 import { cors, runMiddleware } from "../../../../lib/cors";
 
 async function deleteCollection(dbRef, batchSize = 100) {
-  await runMiddleware(req, res, cors);
   const snapshot = await dbRef.limit(batchSize).get();
   if (snapshot.size === 0) {
     return;
@@ -20,6 +19,7 @@ async function deleteCollection(dbRef, batchSize = 100) {
 }
 
 export default async function handler(req, res) {
+  await runMiddleware(req, res, cors);
   if (req.method !== "POST") {
     return res.status(405).json({ message: "La méthode doit être POST" });
   }
@@ -74,7 +74,7 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error("Erreur lors de la suppression:", error.message);
     return res.status(500).json({
-      message: "Erreur serveur lors de la suppression",
+      message: "Erreur lors de la suppression serveur",
       error: error.message,
     });
   }

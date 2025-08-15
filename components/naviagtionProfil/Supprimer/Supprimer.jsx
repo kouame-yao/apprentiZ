@@ -166,6 +166,8 @@ export default function Supprimer() {
         await refetchChapitre();
       }, 1000);
     } catch (error) {
+      console.log(error.message);
+
       toast.error(error.message);
     }
   };

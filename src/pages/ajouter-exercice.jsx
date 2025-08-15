@@ -38,11 +38,7 @@ function ajouter_exercice() {
   const router = useRouter();
 
   return (
-    <Wrapper
-      name={"← Retour au profil"}
-      button={"/profil"}
-      textColor={"text-white"}
-    >
+    <Wrapper name={"← Profil"} button={"/profil"} textColor={"text-white"}>
       <main className="grid place-items-center md:gap-8 gap-4 px-4 ">
         <section>
           <div className="bg-white rounded-lg p-2 w-full  shadow-lg px-3 md:w-400 md:rounded-3xl md:grid md:justify-center md:items-center md:place-items-center md:py-15">

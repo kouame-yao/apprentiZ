@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useContext, useState } from "react";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 import { ApplicationContext } from "../../../context/ApplicationContextProvider";
 
 export default function Gérer() {
@@ -277,42 +277,52 @@ export default function Gérer() {
   return (
     <div>
       <main>
-        <section className="bg-white w-full md:gap-10 md:grid px-3 py-4 mb-8 rounded-2xl">
-          <span className="font-bold md:text-5xl">📁 Gérer vos exercices</span>
-          {/* option 1 */}
-          <div className="grid gap-3">
-            <div className="space-y-1 grid md:gap-4 ">
-              <span className="md:text-2xl md:font-extrabold">Classe</span>
+        <section className="bg-white w-full px-3 py-4 mb-8 rounded-2xl sm:px-4 sm:py-6 md:px-6 md:py-8 lg:px-8 lg:py-10">
+          <h1 className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-4 sm:mb-6 md:mb-8">
+            📁 Gérer vos exercices
+          </h1>
+
+          {/* Conteneur principal des filtres */}
+          <div className="space-y-4 sm:space-y-5 md:space-y-6">
+            {/* Option 1 - Classe */}
+            <div className="space-y-2 sm:space-y-3">
+              <label className="block text-base sm:text-lg md:text-xl lg:text-2xl font-bold sm:font-extrabold text-gray-800">
+                Classe
+              </label>
               <select
-                className=" md:p-8 md:rounded-3xl md:text-2xl md:font-bold w-full border border-gray-100 rounded-md outline-none  p-2"
-                name=""
-                id=""
+                className="w-full p-2 sm:p-3 md:p-4 lg:p-6 xl:p-8 
+                   text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 
+                   font-medium sm:font-semibold md:font-bold
+                   border border-gray-200 rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl 
+                   outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+                   bg-white shadow-sm hover:shadow-md transition-shadow"
                 onChange={(e) => {
                   setOption1(e.target.value);
                 }}
                 value={option1}
               >
-                <option className="" value="">
-                  Sélectionner une classe
-                </option>
-                {Classes?.map((item, index) => {
-                  return (
-                    <option key={index} value={item.nom}>
-                      {item.nom}{" "}
-                    </option>
-                  );
-                })}
+                <option value="">Sélectionner une classe</option>
+                {Classes?.map((item, index) => (
+                  <option key={index} value={item.nom}>
+                    {item.nom}
+                  </option>
+                ))}
               </select>
             </div>
-            {/* option 2 */}
 
+            {/* Option 2 - Chapitre */}
             {option1 && (
-              <div className="grid gap-3">
-                <span className="md:text-2xl md:font-extrabold">Chapitre</span>
+              <div className="space-y-2 sm:space-y-3 animate-fadeIn">
+                <label className="block text-base sm:text-lg md:text-xl lg:text-2xl font-bold sm:font-extrabold text-gray-800">
+                  Chapitre
+                </label>
                 <select
-                  className=" md:p-8 md:rounded-3xl md:text-2xl md:font-bold w-full border border-gray-100 rounded-md outline-none  p-2"
-                  name=""
-                  id=""
+                  className="w-full p-2 sm:p-3 md:p-4 lg:p-6 xl:p-8 
+                     text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 
+                     font-medium sm:font-semibold md:font-bold
+                     border border-gray-200 rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl 
+                     outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+                     bg-white shadow-sm hover:shadow-md transition-shadow"
                   onChange={(e) => {
                     setOption2(e.target.value);
                     const selectedOption = Chapitre?.find(
@@ -324,127 +334,147 @@ export default function Gérer() {
                   }}
                   value={option2}
                 >
-                  <option value="">Selection un capitre</option>
-                  {Chapitre?.map((item, index) => {
-                    return (
-                      <option key={index} value={item.ordre}>
-                        {item.titre} (
-                        {`${item.title.Mathématiques} || ${item.title.Français}`}
-                        )
-                      </option>
-                    );
-                  })}
+                  <option value="">Sélectionner un chapitre</option>
+                  {Chapitre?.map((item, index) => (
+                    <option key={index} value={item.ordre}>
+                      {item.titre} (
+                      {`${item.title.Mathématiques} || ${item.title.Français}`})
+                    </option>
+                  ))}
                 </select>
               </div>
             )}
 
-            {/* option 3 */}
-
+            {/* Option 3 - Matière */}
             {option2 && (
-              <div className="grid gap-3">
-                <span className="md:text-2xl md:font-extrabold">Matière</span>
+              <div className="space-y-2 sm:space-y-3 animate-fadeIn">
+                <label className="block text-base sm:text-lg md:text-xl lg:text-2xl font-bold sm:font-extrabold text-gray-800">
+                  Matière
+                </label>
                 <select
-                  className=" md:p-8 md:rounded-3xl md:text-2xl md:font-bold w-full border border-gray-100 rounded-md outline-none  p-2"
-                  name=""
-                  id=""
+                  className="w-full p-2 sm:p-3 md:p-4 lg:p-6 xl:p-8 
+                     text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 
+                     font-medium sm:font-semibold md:font-bold
+                     border border-gray-200 rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl 
+                     outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+                     bg-white shadow-sm hover:shadow-md transition-shadow"
                   onChange={(e) => {
                     setOption3(e.target.value);
                   }}
                   value={option3}
                 >
-                  <option value="">Selectionner une matière</option>
-                  {newMatiere?.map((item, index) => {
-                    return (
-                      <option key={index} value={item}>
-                        {item}{" "}
-                      </option>
-                    );
-                  })}
+                  <option value="">Sélectionner une matière</option>
+                  {newMatiere?.map((item, index) => (
+                    <option key={index} value={item}>
+                      {item}
+                    </option>
+                  ))}
                 </select>
               </div>
             )}
           </div>
-          <div className="grid space-y-4 mt-8">
+
+          {/* Section des résultats */}
+          <div className="mt-6 sm:mt-8 space-y-4">
+            {/* Titre de la matière sélectionnée */}
             {option3 && (
-              <div className="p-2 grid gap-3 bg-gray-200 rounded-md">
-                <span className="font-bold md:text-3xl">
+              <div className="p-3 sm:p-4 bg-gray-100 rounded-lg sm:rounded-xl animate-fadeIn">
+                <h2 className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-800">
                   {option1} - {Descrip[option3]}
-                </span>
-                <span className="text-gray-400 text-sm">
-                  {/* Apprendre à compter et reconnaitre les chiffres */}
-                </span>
+                </h2>
               </div>
             )}
 
+            {/* Liste des exercices */}
             {option3 && (
-              <div className="grid gap-2 overflow-auto md:h-200 h-50 p-4 border border-blue-600 rounded-2xl">
-                {exercices?.length !== 0
-                  ? exercices?.map((item, index) => {
-                      return (
-                        <div
-                          key={item.id}
-                          className="border border-gray-400 p-2 md:px-3 md:py-0 md:rounded-3xl md:border-4 rounded-md grid md:gap-0 gap-2"
-                        >
-                          <div className="flex gap-4 text-center md:justify-items-start items-center ">
-                            <div className="flex gap-2 ">
-                              <span className="md:text-2xl md:font-bold md:px-4 md:rounded-full bg-blue-300 text-blue-500 whitespace-nowrap inline-block rounded-4xl px-1 py-1">
-                                Exercice {index + 1}
-                              </span>
-                              <span className="md:text-2xl md:font-bold md:px-4 md:rounded-full bg-green-300 text-green-500 rounded-4xl flex items-center justify-center px-1.5  p whitespace-nowrap ">
-                                {item.type}
-                              </span>
-                            </div>
-                            <div className="md:text-2xl flex gap-4 justify-center">
-                              <button
-                                onClick={() => {
-                                  créerExercice(item);
-                                  setModal(true);
-                                }}
-                              >
-                                ✏️
-                              </button>
-                              <button
-                                className="md:text-2xl"
-                                onClick={() => {
-                                  DeletedExercice(item.idExo, item.id);
-                                }}
-                              >
-                                🗑️
-                              </button>
-                            </div>
+              <div className="border-2 border-blue-600 rounded-xl sm:rounded-2xl overflow-hidden animate-fadeIn">
+                <div className="max-h-48 sm:max-h-64 md:max-h-80 lg:max-h-96 xl:max-h-[500px] overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4">
+                  {exercices?.length !== 0 ? (
+                    exercices?.map((item, index) => (
+                      <div
+                        key={item.id}
+                        className="border-2 sm:border-3 md:border-4 border-gray-300 p-3 sm:p-4 
+                           rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl
+                           hover:shadow-md transition-shadow bg-white"
+                      >
+                        {/* Header de l'exercice */}
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-3">
+                          <div className="flex flex-wrap gap-2">
+                            <span
+                              className="bg-blue-100 text-blue-600 px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 
+                                   rounded-full text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 
+                                   font-medium sm:font-semibold md:font-bold whitespace-nowrap"
+                            >
+                              Exercice {index + 1}
+                            </span>
+                            <span
+                              className="bg-green-100 text-green-600 px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 
+                                   rounded-full text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 
+                                   font-medium sm:font-semibold md:font-bold whitespace-nowrap"
+                            >
+                              {item.type}
+                            </span>
                           </div>
-                          <div className="grid gap-2 md:gap-0 ">
-                            <span className="font-bold md:text-2xl">
-                              {item.question}
-                            </span>
-                            <span className="md:text-2xl">
-                              ✅ {item.result[0]}
-                            </span>
+
+                          {/* Boutons d'action */}
+                          <div className="flex gap-2 sm:gap-3 justify-end sm:justify-start">
+                            <button
+                              onClick={() => {
+                                créerExercice(item);
+                                setModal(true);
+                              }}
+                              className="p-1.5 sm:p-2 md:p-3 hover:bg-gray-100 rounded-lg transition-colors
+                               text-lg sm:text-xl md:text-2xl"
+                              aria-label="Modifier l'exercice"
+                            >
+                              ✏️
+                            </button>
+                            <button
+                              onClick={() => {
+                                DeletedExercice(item.idExo, item.id);
+                              }}
+                              className="p-1.5 sm:p-2 md:p-3 hover:bg-gray-100 rounded-lg transition-colors
+                               text-lg sm:text-xl md:text-2xl"
+                              aria-label="Supprimer l'exercice"
+                            >
+                              🗑️
+                            </button>
                           </div>
                         </div>
-                      );
-                    })
-                  : option3 && (
-                      <div className="md:text-4xl md:text-center">
-                        Aucun exercice pour la matière {option3}{" "}
+
+                        {/* Contenu de l'exercice */}
+                        <div className="space-y-2">
+                          <p className="font-bold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-800">
+                            {item.question}
+                          </p>
+                          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-green-600 font-medium">
+                            ✅ {item.result[0]}
+                          </p>
+                        </div>
                       </div>
-                    )}
+                    ))
+                  ) : (
+                    <div className="text-center py-8 sm:py-12">
+                      <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-500">
+                        Aucun exercice pour la matière {option3}
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
             )}
           </div>
 
-          {/* exemple a faire */}
+          {/* Message d'instruction par défaut */}
           {!option3 && (
-            <div className="mt-20">
-              <div className=" grid justify-center items-center text-center gap-4 mb-8">
-                <span className="text-4xl md:text-6xl">🎯</span>
-                <span className=" font-bold md:text-5xl">
-                  Sélectionnez une classe, un chapitre , une matière
-                </span>
-                <span className="text-sm text-gray-500 md:text-4xl">
-                  Utilisez les filtres ci-dessus pour voir les exercices
-                </span>
-              </div>
+            <div className="mt-12 sm:mt-16 md:mt-20 text-center space-y-4 sm:space-y-6">
+              <div className="text-4xl sm:text-5xl md:text-6xl">🎯</div>
+              <h2 className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-gray-800">
+                Sélectionnez une classe, un chapitre, une matière
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl text-gray-500">
+                Utilisez les filtres ci-dessus pour voir les exercices
+              </p>
             </div>
           )}
         </section>

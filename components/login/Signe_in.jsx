@@ -25,7 +25,7 @@ export default function Signe_in() {
     setloding(true);
     const { email, password } = valueInputs;
     if (!email || !password) {
-      alert("tous les champs obligatoire!");
+      toast.warning("tous les champs obligatoire!");
       setloding(false);
       return;
     }

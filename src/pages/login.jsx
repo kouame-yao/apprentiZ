@@ -12,11 +12,14 @@ function login() {
         <div className="grid text-center space-y-2 md:space-y-4">
           <div className="w-full grid justify-center">
             <Image
-              className="bg-white"
+              src="/kids.PNG"
+              alt="Enfants qui apprennent avec l'application"
               width={100}
               height={100}
-              src="/kids.PNG"
-              alt=""
+              style={{
+                width: "100%",
+                height: "auto",
+              }}
             />
           </div>
           <p className="text-gray-700 text-sm md:text-lg">

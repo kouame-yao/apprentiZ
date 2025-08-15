@@ -1,4 +1,5 @@
 import db from "../../../../Auth/firebase_admin";
+import { cors, runMiddleware } from "../../../../lib/cors";
 
 // Descriptions par défaut pour chaque matière
 const descriptionsParMatiere = {
@@ -9,6 +10,7 @@ const descriptionsParMatiere = {
 };
 
 export default async function handler(req, res) {
+  await runMiddleware(req, res, cors);
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Méthode non autorisée" });
   }

@@ -1,6 +1,8 @@
 import db from "../../../../Auth/firebase_admin";
+import { cors, runMiddleware } from "../../../../lib/cors";
 
 async function deleteCollection(dbRef, batchSize = 100) {
+  await runMiddleware(req, res, cors);
   const snapshot = await dbRef.limit(batchSize).get();
   if (snapshot.size === 0) {
     return;

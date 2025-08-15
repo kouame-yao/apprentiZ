@@ -1,4 +1,7 @@
-export default function handler(req, res) {
+import { cors, runMiddleware } from "../../../../lib/cors";
+
+export default async function handler(req, res) {
+  await runMiddleware(req, res, cors);
   // On vide le cookie
   res.setHeader("Set-Cookie", [
     `auth_token=; Path=/; HttpOnly; Secure; SameSite=None; Max-Age=0`,

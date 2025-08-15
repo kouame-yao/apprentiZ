@@ -1,4 +1,5 @@
 import db from "../../../../Auth/firebase_admin";
+import { cors, runMiddleware } from "../../../../lib/cors";
 
 async function deleteCollection(dbRef, batchSize = 100) {
   const snapshot = await dbRef.limit(batchSize).get();
@@ -23,6 +24,7 @@ async function deleteDocAndSubcollections(docRef) {
 }
 
 export default async function handler(req, res) {
+  await runMiddleware(req, res, cors);
   if (req.method !== "POST") {
     return res.status(405).json({ message: "La méthode doit être POST" });
   }

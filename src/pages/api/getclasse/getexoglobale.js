@@ -1,6 +1,7 @@
 import db from "../../../../Auth/firebase_admin";
-
+import { cors, runMiddleware } from "../../../../lib/cors";
 export default async function handler(req, res) {
+  await runMiddleware(req, res, cors);
   if (req.method !== "POST") {
     return res.status(400).json({ message: "La methode est différente" });
   }

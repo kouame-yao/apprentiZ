@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken";
+import { cors, runMiddleware } from "../../../../lib/cors";
 const cookie = require("cookie");
 export default async function handler(req, res) {
+  await runMiddleware(req, res, cors);
   if (req.method !== "GET") {
     return res.status(405).json({ message: "La methode est incorrect " });
   }

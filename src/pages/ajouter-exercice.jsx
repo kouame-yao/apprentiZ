@@ -39,7 +39,7 @@ function ajouter_exercice() {
 
   return (
     <Wrapper
-      name={"← Retour au profil"}
+      name={"← profil"}
       button={"/profil"}
       textColor={"text-white"}
     >

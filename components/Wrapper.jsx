@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-
+import Image from "next/image";
 export default function Wrapper({
   children,
   name,
@@ -19,7 +19,13 @@ export default function Wrapper({
             className="text-2xl md:text-5xl font-bold cursor-pointer "
             onClick={() => router.push("/")}
           >
-            <img className="bg-white" width={100} src="/kids.PNG" alt="" />
+            <Image
+              className="bg-white"
+              width={100}
+              height={100}
+              src="/kids.PNG"
+              alt=""
+            />
           </p>
           <div className="flex gap-2 items-center">
             <a

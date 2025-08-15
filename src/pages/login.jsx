@@ -11,10 +11,11 @@ function login() {
       <section className="grid space-y-8">
         <div className="grid text-center space-y-2 md:space-y-4">
           <div className="w-full grid justify-center">
-            <img
-              src="/kids.PNG"
-              className="place-items-center"
+            <Image
+              className="bg-white"
               width={100}
+              height={100}
+              src="/kids.PNG"
               alt=""
             />
           </div>
